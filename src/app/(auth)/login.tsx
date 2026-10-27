@@ -23,7 +23,7 @@ const Login = () => {
         <Text className="text-6xl font-extrabold text-brand-pressed text-center bg-canvas rounded-full border border-gray-300  h-20 w-20 p-4">
           f
         </Text>
-        {loginError && <Text> {loginError}</Text>}
+        {loginError && <Text className="text-danger-light"> {loginError}</Text>}
         <TextInput
           className="w-full border border-gray-300 rounded-xl p-4 m-4 "
           placeholder="mobile number or email address"

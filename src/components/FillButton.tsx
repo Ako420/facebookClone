@@ -8,7 +8,7 @@ interface fillButtonProps {
 const FillButton = ({ title, handlePress }: fillButtonProps) => {
   return (
     <Pressable
-      className="w-full items-center rounded-xl bg-brand px-4 py-3 active:bg-brand-pressed"
+      className="w-full items-center rounded-3xl bg-brand px-4 py-3 active:bg-brand-pressed"
       onPress={handlePress}
       accessibilityRole="button"
     >

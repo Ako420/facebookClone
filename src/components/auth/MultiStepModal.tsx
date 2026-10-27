@@ -1,9 +1,17 @@
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useState } from "react";
-import { Platform, Pressable, Text, TextInput, View, Modal,StyleSheet,Alert } from "react-native";
+import {
+    Alert,
+    Modal,
+    Platform,
+    Pressable,
+    Text,
+    TextInput,
+    View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import FillButton from "../FillButton";
-
+import { FontAwesome6 } from '@expo/vector-icons'
 
 
 type Gender = "male" | "female" | "other";
@@ -15,22 +23,39 @@ const MultiStepModal = () => {
   const [dateofBirth, setdateOfBirth] = useState<Date | null>(null);
   const [showPicker, setShowPicker] = useState(false);
   const [gender, setGender] = useState<Gender | null>(null);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [error ,setError] =useState<string | null>(null)
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
 
-
-
-  const totalStep = 4;
+  const totalStep = 6;
 
   const handleNext = (): void => {
-     if(!firstName || !lastName ){
-setError("Enter first and SurName")
-return
-    } 
-    if (currentStep < totalStep) setCurrentStep(currentStep + 1);
+    // if (!firstName || !lastName) {
+    //   setError("Enter first and SurName");
+    //   return;
+    // }
+    // if (!dateofBirth) {
+    //   setError("Enter your age");
+    //   return;
+    // }
+    // if (!gender) {
+    //   setError("select your gender");
+    //   return;
+    // }
 
-   
-  
+    // if (!email.trim()) {
+    //   setError("senter valid email");
+    //   return;
+    // }
+
+    // if (!password) {
+    //   setError("enter password");
+    //   return;
+    // }
+
+    setError(null);
+    if (currentStep < totalStep) setCurrentStep(currentStep + 1);
   };
 
   const handleDateChange = (event: any, selectedDate?: Date) => {
@@ -44,18 +69,17 @@ return
     }
   };
 
-  // const handlePrevi = (): void => {
-  //   if (currentStep > 1) setCurrentStep(currentStep - 1);
-  // };
+  const handlePrevious = (): void => {
+    if (currentStep > 1) setCurrentStep(currentStep - 1);
+  };
   const registerStep = () => {
     switch (currentStep) {
-        
       case 1:
         return (
           <View className="m-4">
             <Text className="font-bold text-xl ">What&apos;s your name?</Text>
             <Text className="text-sm">Enter the you use in real Life.</Text>
-            {error && <Text> {error}</Text>}
+
             <View className="flex-row w-90 gap-2 my-4">
               <TextInput
                 placeholder="first Name"
@@ -71,6 +95,7 @@ return
                 className="border border-gray-300 p-4 w-[50%] rounded-xl"
               />
             </View>
+            {error && <Text className="text-danger-light mb-2"> {error}</Text>}
             <FillButton title="next" handlePress={handleNext} />
           </View>
         );
@@ -118,6 +143,7 @@ return
                 />
               )}
             </View>
+            {error && <Text className="text-danger-light mb-2"> {error}</Text>}
             <FillButton title="next" handlePress={handleNext} />
           </View>
         );
@@ -160,7 +186,10 @@ return
 
               <Pressable
                 className="flex-row justify-between px-2 py-3 items-center border-t border-gray-300"
-                onPress={() => {setModalVisible(true); setGender("other")}}
+                onPress={() => {
+                  setModalVisible(true);
+                  setGender("other");
+                }}
               >
                 <View className="leading-6 flex-col items-start w-[80%]">
                   <Text className="text-md text">More options</Text>
@@ -178,85 +207,120 @@ return
                   <View className="w-6 h-6 rounded-full border-2 p-2 border-gray-400  bg-canvas"></View>
                 )}
               </Pressable>
-               {
-                  gender === "other" && ( <Modal
-          animationType="slide"
-          transparent={true}
-          visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
-            setModalVisible(!modalVisible);
-          }}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Text style={styles.modalText}>Hello World!</Text>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => setModalVisible(!modalVisible)}>
-                <Text style={styles.textStyle}>Hide Modal</Text>
-              </Pressable>
+              {gender === "other" && (
+                <Modal
+                  animationType="slide"
+                  transparent={true}
+                  visible={modalVisible}
+                  onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <View>
+                    <View>
+                      <Text>Hello World!</Text>
+                      <Pressable onPress={() => setModalVisible(!modalVisible)}>
+                        <Text>Hide Modal</Text>
+                      </Pressable>
+                    </View>
+                  </View>
+                </Modal>
+              )}
             </View>
-          </View>
-        </Modal>
-       
-                  )
-                }
-            </View>
-            <FillButton title="next" handlePress={handleNext} />
-
+            {error && <Text className="text-danger-light mb-2"> {error}</Text>}
+            <FillButton title="Next" handlePress={handleNext} />
           </View>
         );
 
+      case 4:
+        return (
+          <View className=" justify-start items-center m-4 gap-2">
+            <View className="w-full items-start">
+              <Text className="font-bold text-2xl ">
+                What&apos;s your Email
+              </Text>
+              <Text className="text-xl font-light ">
+                Enter the enail address on which you can be contacted.No one
+                will see this on your profile
+              </Text>
+            </View>
+
+            <TextInput
+              className="w-full border border-gray-300 rounded-xl p-4 m-4 "
+              placeholder=" email address"
+              value={email}
+              autoFocus={true}
+              onChangeText={setEmail}
+            />
+            {error && <Text className="text-red-600">{error}</Text>}
+
+            <View className="w-full items-start gap-1">
+              <Text>you may receive email notification from us</Text>
+              <Text className="text-brand">Learn more</Text>
+            </View>
+
+            <FillButton title="Next" handlePress={handleNext} />
+            <Pressable
+              className="w-full items-center rounded-3xl bg-gray-200 px-4 py-3"
+              onPress={() => console.log("coming")}
+              accessibilityRole="button"
+            >
+              <Text className="text-label ">Sign up with Phone number</Text>
+            </Pressable>
+          </View>
+        );
+      case 5:
+        return (
+          <View className=" justify-start items-center m-4 gap-2">
+            <View className="w-full items-start">
+              <Text className="font-bold text-2xl ">Create a password</Text>
+              <Text className="text-[16px] font-light ">
+                Create a password with at least six letters or numbers it should
+                be something that others can&apos;t guess.
+              </Text>
+            </View>
+
+            <TextInput
+              className="w-full border border-gray-300 rounded-xl p-4 m-4 "
+              placeholder="password"
+              value={password}
+              autoFocus={true}
+              onChangeText={setPassword}
+            />
+            {error && <Text className="text-red-600">{error}</Text>}
+
+            <View className="w-full items-start gap-1">
+              <Text>
+                Remember login info.{" "}
+                <Text className="text-brand">Learn more</Text>
+              </Text>
+            </View>
+
+            <FillButton title="Next" handlePress={handleNext} />
+            
+          </View>
+        );
       default:
         return null;
     }
   };
 
-  return <SafeAreaView className="flex-1">{registerStep()}</SafeAreaView>;
+  return <SafeAreaView className="flex-1">
+    {
+      currentStep > 1 && (
+        <Pressable className="mb-2 ml-2" onPress={handlePrevious}>
+      <FontAwesome6 name="arrow-left" size={25} color="#0000" />
+     {/* <FontAwesome6  name='github' size = {20} color="#5eff" /> */}
+    </Pressable>
+      )
+    }
+    
+    <View>
+{registerStep()}
+  </View>
+    
+    </SafeAreaView>;
 };
-
-
-const styles = StyleSheet.create({
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  button: {
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  buttonOpen: {
-    backgroundColor: '#F194FF',
-  },
-  buttonClose: {
-    backgroundColor: '#2196F3',
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
 
 export default MultiStepModal;
