@@ -1,0 +1,148 @@
+// mockData.ts
+import { User, ChatThread } from '../types/user';
+
+export const USERS: User[] = [
+  {
+    id: 'usr_1',
+    name: 'Marise Akwe',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150',
+    isOnline: true,
+  },
+  {
+    id: 'usr_2',
+    name: 'Mhiz Carla',
+    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_3',
+    name: 'Mbakwa Blake Ufon',
+    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_4',
+    name: 'Sindy Nashual',
+    avatarUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_5',
+    name: 'Delphe Princesse',
+    avatarUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_6',
+    name: 'JONGO HUB',
+    avatarUrl: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_7',
+    name: 'Janay Brenda',
+    avatarUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_8',
+    name: 'Leticia Kim',
+    avatarUrl: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_9',
+    name: 'Patricia Choco',
+    avatarUrl: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=150',
+    isOnline: false,
+  },
+  {
+    id: 'usr_10',
+    name: 'Stella Pretty',
+    avatarUrl: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=150',
+    isOnline: false,
+  },
+];
+
+export const CHAT_THREADS: ChatThread[] = [
+  {
+    id: 'chat_1',
+    user: USERS[0],
+    lastMessage: 'I can see you by the front now!',
+    timestamp: '22:44',
+    unreadCount: 3,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_2',
+    user: USERS[1],
+    lastMessage: 'Agreed. Talk to you after the meeting.',
+    timestamp: '07/06/2026',
+    unreadCount: 3,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_3',
+    user: USERS[2],
+    lastMessage: 'Thanks, I will confirm the date tomorrow.',
+    timestamp: '03/03/2026',
+    unreadCount: 1,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_4',
+    user: USERS[3],
+    lastMessage: 'I will send the specs after our review.',
+    timestamp: '02/03/2026',
+    unreadCount: 1,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_5',
+    user: USERS[4],
+    lastMessage: 'Sounds good, I am looking forward to it!',
+    timestamp: '30/01/2026',
+    unreadCount: 0,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_6',
+    user: USERS[5],
+    lastMessage: 'Happy to help. Have a great day!',
+    timestamp: '14/01/2026',
+    unreadCount: 1,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_7',
+    user: USERS[6],
+    lastMessage: 'See you there. Looking forward to it!',
+    timestamp: '12/12/2025',
+    unreadCount: 0,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_8',
+    user: USERS[7],
+    lastMessage: 'No rush, I have a few books to finish first.',
+    timestamp: '10/12/2025',
+    unreadCount: 0,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_9',
+    user: USERS[8],
+    lastMessage: 'Great, thanks again for sending it!',
+    timestamp: '07/12/2025',
+    unreadCount: 0,
+    isSentByMe: false,
+  },
+  {
+    id: 'chat_10',
+    user: USERS[9],
+    lastMessage: 'Thanks, lunch is going to be great!',
+    timestamp: '23/11/2025',
+    unreadCount: 1,
+    isSentByMe: false,
+  },
+];

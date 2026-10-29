@@ -1,11 +1,8 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import FriendScreen from '@/screens/FriendScreen';
 
 const friend = () => {
   return (
-    <View>
-      <Text>friend</Text>
-    </View>
+    <FriendScreen />
   )
 }
 

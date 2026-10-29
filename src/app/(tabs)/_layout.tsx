@@ -54,7 +54,7 @@ export default function TabBarLayout() {
     <SafeAreaView className="flex-1">
    
       <Header />
-      <View className="relative m-2 h-[48px] flex-row justify-between shadow-[2px]">
+      <View className="relative m-2 h-[48px] flex-row justify-between shadow-1.5">
         {TABS.map((tab, index) => {
           const isFocused = activeTab === index || (activeTab === -1 && index === 0);
           return (

@@ -1,23 +1,23 @@
 // components/StoriesSection.tsx
-import React from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import React from "react";
 import {
-  FlatList,
-  ImageBackground,
-  Image,
-  Text,
-  View,
-  TouchableOpacity,
-  ListRenderItem,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { StoryItem } from '../../types/story';
-import { MOCK_STORIES } from '../../data/story';
+    FlatList,
+    Image,
+    ImageBackground,
+    ListRenderItem,
+    Pressable,
+    Text,
+    View,
+} from "react-native";
+import { MOCK_STORIES } from "../../data/story";
+import { StoryItem } from "../../types/story";
 
 export const StoriesSection: React.FC = () => {
   const renderItem: ListRenderItem<StoryItem> = ({ item }) => {
     if (item.isCreateStory) {
       return (
-        <TouchableOpacity
+        <Pressable
           activeOpacity={0.8}
           className="w-[110px] h-[190px] mx-1 rounded-xl overflow-hidden"
         >
@@ -35,12 +35,12 @@ export const StoriesSection: React.FC = () => {
               </Text>
             </View>
           </ImageBackground>
-        </TouchableOpacity>
+        </Pressable>
       );
     }
 
     return (
-      <TouchableOpacity
+      <Pressable
         activeOpacity={0.8}
         className="w-[110px] h-[190px] mx-1 rounded-xl overflow-hidden"
       >
@@ -63,7 +63,7 @@ export const StoriesSection: React.FC = () => {
             {/* Profile Avatar */}
             <View
               className={`w-10 h-10 rounded-full p-0.5 mt-5 ${
-                item.hasUnseenStories ? 'border-[2.5px] border-[#1877F2]' : ''
+                item.hasUnseenStories ? "border-[2.5px] border-[#1877F2]" : ""
               }`}
             >
               <Image
@@ -77,7 +77,7 @@ export const StoriesSection: React.FC = () => {
               className="text-white text-[13px] font-bold"
               numberOfLines={2}
               style={{
-                textShadowColor: 'rgba(0, 0, 0, 0.75)',
+                textShadowColor: "rgba(0, 0, 0, 0.75)",
                 textShadowOffset: { width: 0, height: 1 },
                 textShadowRadius: 2,
               }}
@@ -86,7 +86,7 @@ export const StoriesSection: React.FC = () => {
             </Text>
           </View>
         </ImageBackground>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 

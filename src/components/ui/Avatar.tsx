@@ -10,7 +10,7 @@ const Avatar = ({ imageUrl, size }: AvatarProps) => {
     <Image
       source={imageUrl}
       style={{ width: size, height: size, borderRadius: size / 2 }}
-      contentFit="contain"
+      contentFit="cover"
     />
   );
 };
